@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
@@ -12,9 +12,12 @@ import Register from 'views/register/Register';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route exact path="/login" component={Login} />
-    <Route exact path="/register" component={Register} />
-    <Route path="/" component={App} />
+    <Switch>
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/register" component={Register} />
+      <Route path="/" component={App} />
+    </Switch>
+    
   </BrowserRouter>,
   document.getElementById('root')
 );
