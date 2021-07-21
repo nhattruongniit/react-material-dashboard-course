@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// views
+import Login from 'views/login/Login';
+import Register from 'views/register/Register';
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Route exact path="/login" component={Login} />
+    <Route exact path="/register" component={Register} />
+    <Route exact path="/" component={App} />
   </BrowserRouter>,
   document.getElementById('root')
 );
