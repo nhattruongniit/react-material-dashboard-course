@@ -1,15 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-// import List from '@material-ui/core/List';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import PeopleIcon from '@material-ui/icons/People';
+
+
+// assets
+import LogoImg from 'assets/images/logo.png'
 
 // styles
 import useStyles from './styles';
 
 function NavBar({ isDrawer }) {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Drawer
@@ -23,12 +33,27 @@ function NavBar({ isDrawer }) {
     >
       <div className={classes.drawerHeader}>
         <Link to='/' className={classes.navBar_link}>
-          <img src="/assets/images/logo.png" alt="Logo" title="logo" />
+          <img src={LogoImg} alt="Logo" title="logo" />
           Material UI
         </Link>
       </div>
+
       <Divider />
-      dsadasds
+      
+      <List component="nav" aria-label="list main">
+        <ListItem button>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+        <ListItem button onClick={() => history.push('/user/list')}>
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="User" />
+        </ListItem>
+      </List>
     </Drawer>
   )
 }

@@ -1,10 +1,16 @@
 import { useState } from 'react';
+import { Route } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import clsx from 'clsx';
 
 // components
 import TopBar from 'components/TopBar/TopBar';
 import NavBar from 'components/NavBar/NavBar';
+
+// views
+import UserList from 'views/users/UserList';
+import UserAdd from 'views/users/UserAdd';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -52,16 +58,16 @@ function App() {
       <TopBar isDrawer={isDrawer} handleToogleDrawer={handleToogleDrawer} />
       <NavBar isDrawer={isDrawer} />
 
-      {/* <NavBar isDrawer={isDrawer} />
-
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: isDrawer,
         })}
       >
         <div className={classes.toolbar} />
-        <ErrorBoundary>{children}</ErrorBoundary>
-      </main> */}
+
+        <Route path="/user/list" component={UserList} />
+        <Route path="/user/add" component={UserAdd} />
+      </main>
     </div>
   );
 }
