@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
@@ -11,6 +11,8 @@ import NavBar from 'components/NavBar/NavBar';
 // views
 import UserList from 'views/users/UserList';
 import UserAdd from 'views/users/UserAdd';
+import Dashboard from 'views/dashboard/Dashboard'
+import Kanban from 'views/kanban/Kanban'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,10 +66,12 @@ function App() {
         })}
       >
         <div className={classes.toolbar} />
-
-        <Route path="/user/list" component={UserList} />
-        <Route path="/user/add" component={UserAdd} />
-
+        <Switch>
+          <Route path="/user/list" component={UserList} />
+          <Route path="/user/add" component={UserAdd} />
+          <Route path="/kanban" component={Kanban} />
+          <Route path="/" component={Dashboard} />
+        </Switch>
       </main>
     </div>
   );

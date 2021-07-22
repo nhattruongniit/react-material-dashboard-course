@@ -9,6 +9,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
 
 // assets
@@ -41,11 +42,17 @@ function NavBar({ isDrawer }) {
       <Divider />
       
       <List component="nav" aria-label="list main">
-        <ListItem button>
+        <ListItem button onClick={() => history.push('/')}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
+        </ListItem>
+        <ListItem button onClick={() => history.push('/kanban')}>
+          <ListItemIcon>
+            <AssessmentIcon />
+          </ListItemIcon>
+          <ListItemText primary="Kanban" />
         </ListItem>
         <ListItem button onClick={() => history.push('/user/list')}>
           <ListItemIcon>
