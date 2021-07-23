@@ -77,121 +77,107 @@ function Dashboard() {
   return (
     <div>
       <h2>Report</h2>
-      <Paper variant="outlined">
-        <Box m={2}>
-          <Grid item smd={12}><h2>Products</h2></Grid>
-          <Grid container item md={12}>
-            <Grid item sm={12} md={6}>
-              <TableContainer>
-                <Table className={classes.table} aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Category</TableCell>
-                      <TableCell align="right"/>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map((row, idx) => (
-                      <TableRow key={idx}>
-                        <TableCell component="th" scope="row">
-                          {row.status}
-                        </TableCell>
-                        <TableCell align="right">{row.number}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
-            <Grid container item sm={12} md={6} justifyContent="center">
-              <div>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      size="small"
-                      name="legend"
-                      color="primary"
-                    />
-                  }
-                  label="Legend"
-                />
-                <br />
-                <Chart options={options} series={series} type="pie" width={500} />
-              </div>
-            </Grid>
-          </Grid>
-        </Box>
-      </Paper>
-      <br />
-      <Grid container item sm={12} md={12} justifyContent="space-between">
-        <Grid item sm={12} md={6}>
-          <Paper variant="outlined" style={{ width: '100%' }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
             <Box m={2}>
-              <Grid item sm={12} md={12}><h2>List Todo</h2></Grid>
-              <Grid container item md={12}>
-                <Grid item sm={12} md={12}>
+              <Grid container item xs={12}><h2>Products</h2></Grid>
+              <Grid container justifyContent="space-between">
+                <Grid item xs={12} sm={12} md={4}>
                   <TableContainer>
                     <Table className={classes.table} aria-label="simple table">
                       <TableHead>
                         <TableRow>
-                          <TableCell>Title</TableCell>
-                          <TableCell align="right">Author</TableCell>
-                          <TableCell align="right">Status</TableCell>
+                          <TableCell>Category</TableCell>
+                          <TableCell align="right"/>
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {todos.map((row, idx) => (
+                        {rows.map((row, idx) => (
                           <TableRow key={idx}>
                             <TableCell component="th" scope="row">
-                              {row.title}
+                              {row.status}
                             </TableCell>
-                            <TableCell align="right">{row.author}</TableCell>
-                            <TableCell align="right">{row.status}</TableCell>
+                            <TableCell align="right">{row.number}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
                     </Table>
                   </TableContainer>
                 </Grid>
-              </Grid>
-            </Box>
-          </Paper>
-        </Grid>
-        <Grid style={{ width: 10, margin: 10 }} />
-        <Grid container item sm={12} md={5}>
-          <Paper variant="outlined" style={{ width: '100%'}}>
-            <Box m={2}>
-              <Grid item sm={12} md={12}><h2>User</h2></Grid>
-              <Grid container item md={12}>
-                <Grid item sm={12} md={12}>
-                  <TableContainer>
-                    <Table className={classes.table} aria-label="simple table">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell>Email</TableCell>
-                          <TableCell>Role</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {users.map((row, idx) => (
-                          <TableRow key={idx}>
-                            <TableCell component="th" scope="row">
-                              {row.email}
-                            </TableCell>
-                            <TableCell>{row.role}</TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
+                <Grid container justifyContent="center" item xs={12} sm={12} md={6}>
+                  <div>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          size="small"
+                          name="legend"
+                          color="primary"
+                        />
+                      }
+                      label="Legend"
+                    />
+                    <br />
+                    <Chart options={options} series={series} type="pie" width={500} />
+                  </div>
                 </Grid>
               </Grid>
             </Box>
           </Paper>
         </Grid>
       </Grid>
-      
-        
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={12} md={7}>
+          <Paper className={classes.paper}>
+            <TableContainer>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Title</TableCell>
+                    <TableCell align="right">Author</TableCell>
+                    <TableCell align="right">Status</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {todos.map((row, idx) => (
+                    <TableRow key={idx}>
+                      <TableCell component="th" scope="row">
+                        {row.title}
+                      </TableCell>
+                      <TableCell align="right">{row.author}</TableCell>
+                      <TableCell align="right">{row.status}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={12} md={5}>
+          <Paper className={classes.paper}>
+            <TableContainer>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Role</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {users.map((row, idx) => (
+                    <TableRow key={idx}>
+                      <TableCell component="th" scope="row">
+                        {row.email}
+                      </TableCell>
+                      <TableCell>{row.role}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
   )
 }
