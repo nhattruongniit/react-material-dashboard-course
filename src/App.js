@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import clsx from 'clsx';
 
 // components
 import TopBar from 'components/TopBar/TopBar';
@@ -14,57 +14,51 @@ import UserAdd from 'views/users/UserAdd';
 import Dashboard from 'views/dashboard/Dashboard'
 import Kanban from 'views/kanban/Kanban'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
+  drawer: {
+    [theme.breakpoints.up('sm')]: {
+      width: `${process.env.REACT_APP_DRAWER_WIDTH}px`,
+      flexShrink: 0,
+    },
+  },
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${process.env.REACT_APP_DRAWER_WIDTH}px)`,
+      marginLeft: `${process.env.REACT_APP_DRAWER_WIDTH}px`,
+    },
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${process.env.REACT_APP_DRAWER_WIDTH}px`,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
   },
 }));
 
 
 function App() {
   const classes = useStyles();
-  const [isDrawer, setIsDrawer] = useState(true);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  function handleToogleDrawer() {
-    setIsDrawer(!isDrawer);
-  }
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
 
   return (
     <div className={classes.root}>
       <CssBaseline />
 
-      <TopBar isDrawer={isDrawer} handleToogleDrawer={handleToogleDrawer} />
-      <NavBar isDrawer={isDrawer} />
+      <AppBar position="fixed" className={classes.appBar}>
+        <TopBar handleDrawerToggle={handleDrawerToggle} />
+      </AppBar>
 
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: isDrawer,
-        })}
-      >
+      <NavBar mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
+
+      <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
           <Route path="/user/list" component={UserList} />

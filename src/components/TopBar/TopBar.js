@@ -1,19 +1,8 @@
 import React from 'react';
-
-// libs
-import clsx from 'clsx';
-
-// material core
-
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-
-// material icon
-import HomeIcon from '@material-ui/icons/Home';
+import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 
 // components
 import Account from './components/Account';
@@ -23,50 +12,31 @@ import DarkMode from './components/DarkMode';
 // styles
 import useStyles from './styles';
 
-function TopBar({ isDrawer, handleToogleDrawer }) {
+function TopBar({ isDrawer, handleDrawerToggle }) {
   const classes = useStyles();
 
   return (
-    <AppBar
-      position="fixed"
-      className={clsx(classes.appBar, {
-        [classes.appBarShift]: isDrawer,
-      })}
-    >
-      <Toolbar>
-        <IconButton color="inherit" aria-label="open drawer" edge="start" className={clsx(classes.menuButton)}>
-          <HomeIcon />
-        </IconButton>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleToogleDrawer}
-          edge="start"
-          className={clsx(classes.menuButton)}
-        >
-          <MenuIcon />
-        </IconButton>
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
-        <div className={classes.grow} />
-        <div className={classes.topBar_setting}>
+    <Toolbar>
+      <Grid container alignItems="center">
+        <Grid container item xs={6}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Grid>
+        <Grid container item xs={6} justifyContent="flex-end">
           <Language {...classes} />
           <DarkMode />
           <Account {...classes} />
-        </div>
-      </Toolbar>
-    </AppBar>
+        </Grid>
+      </Grid>
+      
+    </Toolbar>
   );
 }
 
