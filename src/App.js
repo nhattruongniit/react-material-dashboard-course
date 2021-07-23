@@ -13,6 +13,7 @@ import UserList from 'views/users/UserList';
 import UserAdd from 'views/users/UserAdd';
 import Dashboard from 'views/dashboard/Dashboard'
 import Kanban from 'views/kanban/Kanban'
+import ProductList from 'views/products/ProductList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,6 +64,7 @@ function App() {
         <Switch>
           <Route path="/user/list" component={UserList} />
           <Route path="/user/add" component={UserAdd} />
+          <Route path="/product/list" component={ProductList} />
           <Route path="/kanban" component={Kanban} />
           <Route path="/" component={Dashboard} />
         </Switch>

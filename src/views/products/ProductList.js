@@ -12,8 +12,8 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-
-import Pagination from 'components/Pagination/Pagination';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 
 const useStyles = makeStyles({
   table: {
@@ -21,13 +21,21 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, email, role) {
-  return { name, email, role };
+function createData(name, category, price) {
+  return { name, category, price };
 }
 
 const rows = [
-  createData('Tony Nguyen', 'nhattruong1811@gmail.com', 'ADMIN'),
-  createData('David Name', 'david@gmail.com', 'OPERATOR'),
+  createData('Chicken', 'meat', '20.000 VND'),
+  createData('Beef', 'meat', '50.000 VND'),
+  createData('Chicken', 'meat', '20.000 VND'),
+  createData('Beef', 'meat', '50.000 VND'),
+  createData('Chicken', 'meat', '20.000 VND'),
+  createData('Beef', 'meat', '50.000 VND'),
+  createData('Chicken', 'meat', '20.000 VND'),
+  createData('Beef', 'meat', '50.000 VND'),
+  createData('Chicken', 'meat', '20.000 VND'),
+  createData('Beef', 'meat', '50.000 VND'),
 ];
 
 export default function UserList() {
@@ -37,8 +45,16 @@ export default function UserList() {
   return (
     <>
       <Grid container alignItems="center">
-        <Grid item sm={8}><h2>User</h2></Grid>
-        <Grid container item sm={4} justifyContent="flex-end">
+        <Grid item sm={8}>
+          <h2>Product</h2>
+        </Grid>
+        <Grid item sm={4} className="text-right">
+          <IconButton aria-label="list" component="span">
+            <FormatListBulletedIcon />
+          </IconButton>
+          <IconButton aria-label="grid" component="span">
+            <ViewComfyIcon />
+          </IconButton>
           <Button
             variant="contained"
             color="primary"
@@ -56,19 +72,19 @@ export default function UserList() {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Role</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell>Price</TableCell>
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
+            {rows.map((row, idx) => (
+              <TableRow key={idx}>
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.role}</TableCell>
+                <TableCell>{row.category}</TableCell>
+                <TableCell>{row.price}</TableCell>
                 <TableCell>
                   <IconButton color="primary" aria-label="edit user" component="span">
                     <EditIcon />
@@ -79,8 +95,6 @@ export default function UserList() {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <Pagination />
     </>
     
   );
