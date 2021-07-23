@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from "react-apexcharts";
+import clsx from 'clsx';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -13,12 +14,24 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
   table: {
     width: '100%'
   },
-});
+  progressInprocess: {
+    '& div': {
+      backgroundColor: theme.palette.primary.main
+    }
+  },
+  progressCompleted: {
+    '& div': {
+      backgroundColor: theme.palette.success.main
+    }
+  }
+}));
 
 function createData(status, number) {
   return { status, number };
@@ -30,18 +43,17 @@ const rows = [
   createData('Rice', 13)
 ];
 
-function createDataTodo(title, author, status) {
-  return { title, author, status};
+function createDataTodo(title, author, progress, status) {
+  return { title, author, progress, status};
 }
 
 const todos = [
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 'Completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 100, 'Completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 0, 'New'),
+  createDataTodo('Learn React', 'Tony Nguyen', 20, 'Inprocess'),
+  createDataTodo('Learn React', 'Tony Nguyen', 100, 'Completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 0, 'New'),
+  createDataTodo('Learn React', 'Tony Nguyen', 60, 'Inprocess'),
 ];
 
 function createDataUser(email, role) {
@@ -51,7 +63,7 @@ function createDataUser(email, role) {
 const users = [
   createDataUser('nhattruong1811@gmail.com', 'Admin'),
   createDataUser('david@gmail.com', 'Operator'),
-  createDataUser('khanh@gmail.com', 'Lead'),
+  createDataUser('khanh@gmail.com', 'Collaborator'),
   createDataUser('minh@gmail.com', 'Collaborator'),
   createDataUser('david@gmail.com', 'Operator'),
   createDataUser('david@gmail.com', 'Operator'),
@@ -71,13 +83,28 @@ const options = {
 
 const series = [44, 55, 13];
 
+function LinearProgressWithLabel(props) {
+  return (
+    <Box display="flex" alignItems="center">
+      <Box width="100%" mr={1}>
+        <LinearProgress variant="determinate" {...props} />
+      </Box>
+      <Box minWidth={35}>
+        <Typography variant="body2" color="textSecondary">{`${Math.round(
+          props.value,
+        )}%`}</Typography>
+      </Box>
+    </Box>
+  );
+}
+
 function Dashboard() {
   const classes = useStyles();
 
   return (
     <div>
       <h2>Report</h2>
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Box m={2}>
@@ -129,52 +156,68 @@ function Dashboard() {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={7}>
           <Paper className={classes.paper}>
-            <TableContainer>
-              <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Title</TableCell>
-                    <TableCell align="right">Author</TableCell>
-                    <TableCell align="right">Status</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {todos.map((row, idx) => (
-                    <TableRow key={idx}>
-                      <TableCell component="th" scope="row">
-                        {row.title}
-                      </TableCell>
-                      <TableCell align="right">{row.author}</TableCell>
-                      <TableCell align="right">{row.status}</TableCell>
+            <Box m={2}>
+              <Grid container item xs={12}><h2>Tasks</h2></Grid>
+              <TableContainer>
+                <Table className={classes.table} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell width="30%">Title</TableCell>
+                      <TableCell width="25%" >Author</TableCell>
+                      <TableCell width="30%">Progress</TableCell>
+                      <TableCell width="15%">Status</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                  </TableHead>
+                  <TableBody>
+                    {todos.map((row, idx) => (
+                      <TableRow key={idx}>
+                        <TableCell component="th" scope="row">
+                          {row.title}
+                        </TableCell>
+                        <TableCell>{row.author}</TableCell>
+                        <TableCell>
+                          <LinearProgressWithLabel 
+                            className={clsx(
+                              (row.progress > 0 && row.progress < 99) && classes.progressInprocess,
+                              row.progress === 100 && classes.progressCompleted
+                            )}
+                            value={row.progress} 
+                          />
+                        </TableCell>
+                        <TableCell>{row.status}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Box>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12} md={5}>
           <Paper className={classes.paper}>
-            <TableContainer>
-              <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Role</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {users.map((row, idx) => (
-                    <TableRow key={idx}>
-                      <TableCell component="th" scope="row">
-                        {row.email}
-                      </TableCell>
-                      <TableCell>{row.role}</TableCell>
+            <Box m={2}>
+              <Grid container item xs={12}><h2>Users</h2></Grid>
+              <TableContainer>
+                <Table className={classes.table} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Email</TableCell>
+                      <TableCell>Role</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                  </TableHead>
+                  <TableBody>
+                    {users.map((row, idx) => (
+                      <TableRow key={idx}>
+                        <TableCell component="th" scope="row">
+                          {row.email}
+                        </TableCell>
+                        <TableCell>{row.role}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Box>
           </Paper>
         </Grid>
       </Grid>

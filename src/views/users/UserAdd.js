@@ -52,8 +52,9 @@ function UserAdd() {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Admin</MenuItem>
-              <MenuItem value={20}>Operator</MenuItem>
+              <MenuItem value="admin">Admin</MenuItem>
+              <MenuItem value="operator">Operator</MenuItem>
+              <MenuItem value="collaborator">Collaborator</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -79,8 +80,8 @@ function UserAdd() {
               label="District"
               fullWidth
             >
-              <MenuItem value={10}>Phu Nhuan</MenuItem>
-              <MenuItem value={20}>Binh Thanh</MenuItem>
+              <MenuItem value="phunhuan">Phu Nhuan</MenuItem>
+              <MenuItem value="binhthanh">Binh Thanh</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -93,8 +94,8 @@ function UserAdd() {
               label="City"
               fullWidth
             >
-              <MenuItem value={10}>TP.HCM</MenuItem>
-              <MenuItem value={20}>HN</MenuItem>
+              <MenuItem value="hcm">TP.HCM</MenuItem>
+              <MenuItem value="hn">HN</MenuItem>
             </Select>
           </FormControl>
         </Grid>

@@ -5,6 +5,8 @@ import { useHistory } from 'react-router';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
+
 
 // material icon
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -51,8 +53,12 @@ function Account({ ...classes }) {
         open={Boolean(anchorEl)}
         onClose={_handleClose}
       >
-        <MenuItem className={classes.menuProfile}>tony nguyen</MenuItem>
-        <MenuItem className={classes.menuProfile} onClick={_handleLogout}>
+        <div className={classes.textRole}>ADMIN</div>
+        <Divider />
+        <MenuItem>
+          My account
+        </MenuItem>
+        <MenuItem onClick={_handleLogout}>
           Logout
         </MenuItem>
       </Menu>
