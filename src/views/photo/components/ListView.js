@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import EditIcon from '@material-ui/icons/Edit';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 const useStyles = makeStyles({
   table: {
@@ -17,6 +20,7 @@ const useStyles = makeStyles({
 });
 
 function ListView({ data }) {
+  const history = useHistory();
   const classes = useStyles();
 
   return (
@@ -27,8 +31,8 @@ function ListView({ data }) {
             <TableCell width="15%">Image</TableCell>
             <TableCell>Title</TableCell>
             <TableCell>Category</TableCell>
-            <TableCell>Price</TableCell>
-            <TableCell width="10%">Action</TableCell>
+            <TableCell>Description</TableCell>
+            <TableCell width="15%">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -41,11 +45,16 @@ function ListView({ data }) {
                 {row.title}
               </TableCell>
               <TableCell>{row.category}</TableCell>
-              <TableCell>{row.price}</TableCell>
+              <TableCell>{row.description}</TableCell>
               <TableCell>
-                <IconButton color="primary" aria-label="edit user" component="span">
-                  <EditIcon />
-                </IconButton>
+                <Grid container>
+                  <IconButton color="primary" aria-label="edit photo" component="span" onClick={() => history.push('/photo/edit/1')}>
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton color="primary" aria-label="view photo" component="span" onClick={() => history.push('/photo/1')}>
+                    <VisibilityIcon />
+                  </IconButton>
+                </Grid>
               </TableCell>
             </TableRow>
           ))}

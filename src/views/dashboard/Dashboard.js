@@ -106,7 +106,7 @@ function Dashboard() {
       <h2>Report</h2>
       <Grid container>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
+          <Paper>
             <Box m={2}>
               <Grid container item xs={12}><h2>Photos</h2></Grid>
               <Grid container justifyContent="space-between">
@@ -155,7 +155,7 @@ function Dashboard() {
       </Grid>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12} md={7}>
-          <Paper className={classes.paper}>
+          <Paper>
             <Box m={2}>
               <Grid container item xs={12}><h2>Tasks</h2></Grid>
               <TableContainer>
@@ -194,7 +194,7 @@ function Dashboard() {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12} md={5}>
-          <Paper className={classes.paper}>
+          <Paper>
             <Box m={2}>
               <Grid container item xs={12}><h2>Users</h2></Grid>
               <TableContainer>

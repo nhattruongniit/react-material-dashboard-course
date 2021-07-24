@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,25 +12,26 @@ import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import ListView from './components/ListView';
 import GridView from './components/GridView';
 
-function createData(image, title, category, price) {
-  return { image, title, category, price };
+function createData(image, title, category, description) {
+  return { image, title, category, description };
 }
 
 const data = [
-  createData('http://placeimg.com/640/480/sports', 'Sports 1', 'sports', '20.000 VND'),
-  createData('http://placeimg.com/640/480/nature', 'Nature 2', 'nature', '50.000 VND'),
-  createData('http://placeimg.com/640/480/sports', 'Sports 3', 'sports', '20.000 VND'),
-  createData('http://placeimg.com/640/480/nature', 'Nature 4', 'nature', '50.000 VND'),
-  createData('http://placeimg.com/640/480/fashion', 'Fashion 1', 'fashion', '20.000 VND'),
-  createData('http://placeimg.com/640/480/sports', 'Sports 4', 'sports', '50.000 VND'),
-  createData('http://placeimg.com/640/480/fashion', 'Fashion 4', 'fashion', '20.000 VND'),
-  createData('http://placeimg.com/640/480/nature', 'Nature 1', 'nature', '50.000 VND'),
-  createData('http://placeimg.com/640/480/fashion', 'Fashion 6', 'fashion', '20.000 VND'),
-  createData('http://placeimg.com/640/480/sports', 'Sports 4', 'sports', '50.000 VND'),
+  createData('http://placeimg.com/640/480/sports', 'Sports 1', 'sports', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/nature', 'Nature 2', 'nature', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/sports', 'Sports 3', 'sports', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/nature', 'Nature 4', 'nature', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/fashion', 'Fashion 1', 'fashion', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/sports', 'Sports 4', 'sports', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/fashion', 'Fashion 4', 'fashion', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/nature', 'Nature 1', 'nature', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/fashion', 'Fashion 6', 'fashion', 'Lizards are a widespread group of squamate reptiles'),
+  createData('http://placeimg.com/640/480/sports', 'Sports 4', 'sports', 'Lizards are a widespread group of squamate reptiles'),
 ];
 
 export default function PhotoList() {
-  const [modeView, setModeView] = useState('list')
+  const history = useHistory();
+  const [modeView, setModeView] = useState('list');
 
   return (
     <>
@@ -50,6 +52,7 @@ export default function PhotoList() {
             size="small"
             startIcon={<AddIcon />}
             className="ml-10"
+            onClick={() => history.push('/photo/add')}
           >
             Add
           </Button>

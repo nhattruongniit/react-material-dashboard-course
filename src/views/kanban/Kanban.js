@@ -9,7 +9,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
-import AddIcon from '@material-ui/icons/Add';
 
 import useStyles from './styles';
 
@@ -47,22 +46,11 @@ function Kanban() {
   return (
     <div>
       <Grid container alignItems="center">
-        <Grid item sm={8}><h2>Kanban</h2></Grid>
-        <Grid item sm={4} container justifyContent="flex-end">
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            className={classes.button}
-            startIcon={<AddIcon />}
-          >
-            Add Tasks
-          </Button>
-        </Grid>
+        <Grid item sm={12}><h2>Kanban Board</h2></Grid>
       </Grid>
       <Paper variant="outlined">
         <Box m={2}>
-          <Grid container item xs={12} spacing={3}>
+          <Grid container item xs={12} spacing={3} className="m-0">
             <Grid item xs={4}>
               <Paper elevation={3}>
                 <Card className={classes.root}>
@@ -79,6 +67,9 @@ function Kanban() {
                           </Typography>
                         </CardContent>
                         <CardActions>
+                          <Button size="small" color="primary">
+                            Add
+                          </Button>
                           <Button size="small" color="primary">
                             Edit
                           </Button>
@@ -114,6 +105,9 @@ function Kanban() {
                       </CardContent>
                       <CardActions>
                         <Button size="small" color="primary">
+                          Add
+                        </Button>
+                        <Button size="small" color="primary">
                           Edit
                         </Button>
                         <Grid container justifyContent="flex-end">
@@ -147,6 +141,9 @@ function Kanban() {
                       </CardContent>
                       <CardActions>
                         <Button size="small" color="primary">
+                          Add
+                        </Button>
+                        <Button size="small" color="primary">
                           Edit
                         </Button>
                         <Grid container justifyContent="flex-end">
@@ -164,6 +161,9 @@ function Kanban() {
                         </Typography>
                       </CardContent>
                       <CardActions>
+                        <Button size="small" color="primary">
+                          Add
+                        </Button>
                         <Button size="small" color="primary">
                           Edit
                         </Button>

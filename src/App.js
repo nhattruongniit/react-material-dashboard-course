@@ -11,9 +11,11 @@ import NavBar from 'components/NavBar/NavBar';
 // views
 import UserList from 'views/users/UserList';
 import UserAdd from 'views/users/UserAdd';
-import Dashboard from 'views/dashboard/Dashboard'
-import Kanban from 'views/kanban/Kanban'
-import PhotoList from 'views/photo/PhotoList'
+import Dashboard from 'views/dashboard/Dashboard';
+import Kanban from 'views/kanban/Kanban';
+import PhotoList from 'views/photo/PhotoList';
+import PhotoAddEdit from 'views/photo/PhotoAddEdit';
+import PhotoDetail from 'views/photo/PhotoDetail';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +67,9 @@ function App() {
           <Route path="/user/list" component={UserList} />
           <Route path="/user/add" component={UserAdd} />
           <Route path="/photo/list" component={PhotoList} />
+          <Route path="/photo/add" component={PhotoAddEdit} />
+          <Route path="/photo/edit/:id" component={PhotoAddEdit} />
+          <Route path="/photo/:id" component={PhotoDetail} />
           <Route path="/kanban" component={Kanban} />
           <Route path="/" component={Dashboard} />
         </Switch>
