@@ -20,5 +20,10 @@ Check out the live application -> https://tender-montalcini-22dc6e.netlify.app/
 - authenticate routes
 - role user
 - drag & drop
-- apex chart
 - infinite scroll
+- dark mode
+- multi languages
+
+## API
+
+use api: https://github.com/nhattruongniit/tony-json-server
