@@ -30,7 +30,16 @@ const useStyles = makeStyles(theme =>({
     '& div': {
       backgroundColor: theme.palette.success.main
     }
-  }
+  },
+  high: {
+    color: theme.palette.error.main
+  },
+  medium: {
+    color: theme.palette.info.main
+  },
+  low: {
+    color: theme.palette.warning.main
+  },
 }));
 
 function createData(status, number) {
@@ -43,17 +52,17 @@ const rows = [
   createData('Fashion', 13)
 ];
 
-function createDataTodo(title, author, progress, status) {
-  return { title, author, progress, status};
+function createDataTodo(title, author, progress, severity, status) {
+  return { title, author, progress, severity, status};
 }
 
 const todos = [
-  createDataTodo('Learn React', 'Tony Nguyen', 100, 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 0, 'New'),
-  createDataTodo('Learn React', 'Tony Nguyen', 20, 'Inprocess'),
-  createDataTodo('Learn React', 'Tony Nguyen', 100, 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 0, 'New'),
-  createDataTodo('Learn React', 'Tony Nguyen', 60, 'Inprocess'),
+  createDataTodo('Learn React', 'Tony Nguyen', 100, 'low', 'Completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 0, 'medium', 'New'),
+  createDataTodo('Learn React', 'Tony Nguyen', 20, 'high', 'Inprocess'),
+  createDataTodo('Learn React', 'Tony Nguyen', 100, 'high', 'Completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 0, 'medium', 'New'),
+  createDataTodo('Learn React', 'Tony Nguyen', 60, 'medium', 'Inprocess'),
 ];
 
 function createDataUser(email, role) {
@@ -140,6 +149,7 @@ function Dashboard() {
                           size="small"
                           name="legend"
                           color="primary"
+                          checked
                         />
                       }
                       label="Legend"
@@ -162,9 +172,10 @@ function Dashboard() {
                 <Table className={classes.table} aria-label="simple table">
                   <TableHead>
                     <TableRow>
-                      <TableCell width="30%">Title</TableCell>
-                      <TableCell width="25%" >Author</TableCell>
+                      <TableCell width="20%">Title</TableCell>
+                      <TableCell width="20%" >Author</TableCell>
                       <TableCell width="30%">Progress</TableCell>
+                      <TableCell width="15%">Severity</TableCell>
                       <TableCell width="15%">Status</TableCell>
                     </TableRow>
                   </TableHead>
@@ -183,6 +194,18 @@ function Dashboard() {
                             )}
                             value={row.progress} 
                           />
+                        </TableCell>
+                        <TableCell width="15%">
+                          <span
+                            className={clsx(
+                              row.severity === 'low' && classes.low,
+                              row.severity === 'medium' && classes.medium,
+                              row.severity === 'high' && classes.high,
+                            )}
+                          >
+                            {row.severity}
+                          </span>
+                          
                         </TableCell>
                         <TableCell>{row.status}</TableCell>
                       </TableRow>
