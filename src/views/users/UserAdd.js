@@ -13,53 +13,66 @@ function UserAdd() {
   return (
     <>
       <Grid container alignItems="center">
-        <Grid sm="12"><h2>Add User</h2></Grid>
+        <Grid item sm={12}><h2>Add User</h2></Grid>
       </Grid>
       <Grid>
         <h3>Information</h3>
       </Grid>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="First Name"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Last Name"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Email"
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <FormControl variant="outlined" fullWidth>
-            <InputLabel id="demo-simple-select-outlined-label">Role</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              label="Role"
+      <Grid container spacing={4}>
+        <Grid container item spacing={2} xs={12} md={9}>
+          <Grid item xs={12} md={6}>
+            <TextField
               fullWidth
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="admin">Admin</MenuItem>
-              <MenuItem value="operator">Operator</MenuItem>
-              <MenuItem value="collaborator">Collaborator</MenuItem>
-            </Select>
-          </FormControl>
+              variant="outlined"
+              label="First Name"
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Last Name"
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              label="Email"
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel id="demo-simple-select-outlined-label">Role</InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                label="Role"
+                value=""
+                fullWidth
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="admin">Admin</MenuItem>
+                <MenuItem value="operator">Operator</MenuItem>
+                <MenuItem value="collaborator">Collaborator</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
+        <Grid container item xs={12} md={3} justifyContent="center">
+          <div>
+            <img src="https://cdn.fakercloud.com/avatars/jodytaggart_128.jpg" alt="Avatar" />
+            <br /><br />
+            <Button variant="outlined" size="small" color="primary">
+              Random Photo
+            </Button>
+          </div>
         </Grid>
       </Grid>
-      <br /><br />
+      
+      <br />
       <Grid>
         <h3>Advance</h3>
       </Grid>
@@ -78,6 +91,7 @@ function UserAdd() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               label="District"
+              value=""
               fullWidth
             >
               <MenuItem value="phunhuan">Phu Nhuan</MenuItem>
@@ -92,6 +106,7 @@ function UserAdd() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               label="City"
+              value=""
               fullWidth
             >
               <MenuItem value="hcm">TP.HCM</MenuItem>

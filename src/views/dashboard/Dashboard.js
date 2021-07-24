@@ -38,9 +38,9 @@ function createData(status, number) {
 }
 
 const rows = [
-  createData('Meat', 44),
-  createData('Vegetable', 55),
-  createData('Rice', 13)
+  createData('Sports', 44),
+  createData('Nature', 55),
+  createData('Fashion', 13)
 ];
 
 function createDataTodo(title, author, progress, status) {
@@ -78,7 +78,7 @@ const options = {
   chart: {
     type: 'pie',
   },
-  labels: ['Meat', 'Vegetable', 'Rice'],
+  labels: ['sports', 'nature', 'fashsion'],
 }
 
 const series = [44, 55, 13];
@@ -108,7 +108,7 @@ function Dashboard() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Box m={2}>
-              <Grid container item xs={12}><h2>Products</h2></Grid>
+              <Grid container item xs={12}><h2>Photos</h2></Grid>
               <Grid container justifyContent="space-between">
                 <Grid item xs={12} sm={12} md={4}>
                   <TableContainer>

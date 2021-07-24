@@ -21,13 +21,13 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, email, role) {
-  return { name, email, role };
+function createData(avatar, name, email, role) {
+  return { avatar, name, email, role };
 }
 
 const rows = [
-  createData('Tony Nguyen', 'nhattruong1811@gmail.com', 'ADMIN'),
-  createData('David Name', 'david@gmail.com', 'OPERATOR'),
+  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'ADMIN'),
+  createData('https://cdn.fakercloud.com/avatars/okandungel_128.jpg', 'David Name', 'david@gmail.com', 'OPERATOR'),
 ];
 
 export default function UserList() {
@@ -55,6 +55,7 @@ export default function UserList() {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>Avatar</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Role</TableCell>
@@ -64,7 +65,10 @@ export default function UserList() {
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
+                <TableCell scope="row">
+                  <img src={row.avatar} alt="Avatar" width="50px" />
+                </TableCell>
+                <TableCell scope="row">
                   {row.name}
                 </TableCell>
                 <TableCell>{row.email}</TableCell>

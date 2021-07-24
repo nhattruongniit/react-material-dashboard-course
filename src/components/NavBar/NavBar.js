@@ -12,7 +12,7 @@ import Hidden from '@material-ui/core/Hidden';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import PhotoIcon from '@material-ui/icons/Photo';
 
 // assets
 import LogoImg from 'assets/images/logo.png'
@@ -39,9 +39,9 @@ function NavBar({ mobileOpen, handleDrawerToggle }) {
           <ListItemIcon><DashboardIcon /></ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem button onClick={() => history.push('/product/list')}>
-          <ListItemIcon><ShoppingBasketIcon /></ListItemIcon>
-          <ListItemText primary="Product" />
+        <ListItem button onClick={() => history.push('/photo/list')}>
+          <ListItemIcon><PhotoIcon /></ListItemIcon>
+          <ListItemText primary="Photo" />
         </ListItem>
         <ListItem button onClick={() => history.push('/kanban')}>
           <ListItemIcon>

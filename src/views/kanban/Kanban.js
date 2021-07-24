@@ -47,8 +47,8 @@ function Kanban() {
   return (
     <div>
       <Grid container alignItems="center">
-        <Grid sm="8"><h2>Kanban</h2></Grid>
-        <Grid sm="4" container justifyContent="flex-end">
+        <Grid item sm={8}><h2>Kanban</h2></Grid>
+        <Grid item sm={4} container justifyContent="flex-end">
           <Button
             variant="contained"
             color="primary"
