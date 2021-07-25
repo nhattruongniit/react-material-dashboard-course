@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +9,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
+import AddIcon from '@material-ui/icons/Add';
 
+import DialogTask from './components/DialogTask'
+
+// styles
 import useStyles from './styles';
 
 const news = [
@@ -42,11 +46,27 @@ const news = [
 
 function Kanban() {
   const classes = useStyles();
+  const [isOpen, setIsOpen] = useState(false)
+
+  function handleCloseDialog() {
+    setIsOpen(false)
+  }
 
   return (
     <div>
       <Grid container alignItems="center">
-        <Grid item sm={12}><h2>Kanban Board</h2></Grid>
+        <Grid item sm={8}><h2>Kanban Board</h2></Grid>
+        <Grid container item sm={4} justifyContent="flex-end">
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            className={classes.button}
+            startIcon={<AddIcon />}
+          >
+            Add Task
+          </Button>
+        </Grid>
       </Grid>
       <Paper variant="outlined">
         <Box m={2}>
@@ -68,10 +88,10 @@ function Kanban() {
                         </CardContent>
                         <CardActions>
                           <Button size="small" color="primary">
-                            Add
-                          </Button>
-                          <Button size="small" color="primary">
                             Edit
+                          </Button>
+                          <Button size="small" color="primary" onClick={() => setIsOpen(true)}>
+                            View
                           </Button>
                           <Grid container justifyContent="flex-end">
                             <Typography variant="body2" color="textSecondary" component="p">
@@ -105,10 +125,10 @@ function Kanban() {
                       </CardContent>
                       <CardActions>
                         <Button size="small" color="primary">
-                          Add
-                        </Button>
-                        <Button size="small" color="primary">
                           Edit
+                        </Button>
+                        <Button size="small" color="primary" onClick={() => setIsOpen(true)}>
+                          View
                         </Button>
                         <Grid container justifyContent="flex-end">
                           <Typography variant="body2" color="textSecondary" component="p">
@@ -141,10 +161,10 @@ function Kanban() {
                       </CardContent>
                       <CardActions>
                         <Button size="small" color="primary">
-                          Add
-                        </Button>
-                        <Button size="small" color="primary">
                           Edit
+                        </Button>
+                        <Button size="small" color="primary" onClick={() => setIsOpen(true)}>
+                          View
                         </Button>
                         <Grid container justifyContent="flex-end">
                           <Typography variant="body2" color="textSecondary" component="p">
@@ -162,10 +182,10 @@ function Kanban() {
                       </CardContent>
                       <CardActions>
                         <Button size="small" color="primary">
-                          Add
-                        </Button>
-                        <Button size="small" color="primary">
                           Edit
+                        </Button>
+                        <Button size="small" color="primary" onClick={() => setIsOpen(true)}>
+                          View
                         </Button>
                         <Grid container justifyContent="flex-end">
                           <Typography variant="body2" color="textSecondary" component="p">
@@ -179,9 +199,11 @@ function Kanban() {
               </Paper>
             </Grid>
           </Grid>
-            
         </Box>
       </Paper>
+      
+      <DialogTask isOpen={isOpen} handleCloseDialog={handleCloseDialog} />
+
     </div>
   )
 }
