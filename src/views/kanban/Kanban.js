@@ -11,7 +11,8 @@ import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import AddIcon from '@material-ui/icons/Add';
 
-import DialogTask from './components/DialogTask'
+import TaskViewModal from './components/TaskViewModal'
+import TaskEditModal from './components/TaskEditModal';
 
 // styles
 import useStyles from './styles';
@@ -46,10 +47,15 @@ const news = [
 
 function Kanban() {
   const classes = useStyles();
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenAddTask, setIsOpenAddTask] = useState(false);
 
   function handleCloseDialog() {
     setIsOpen(false)
+  }
+
+  function handleCloseDialogAddTask() {
+    setIsOpenAddTask(false)
   }
 
   return (
@@ -63,6 +69,7 @@ function Kanban() {
             size="small"
             className={classes.button}
             startIcon={<AddIcon />}
+            onClick={() => setIsOpenAddTask(true)}
           >
             Add Task
           </Button>
@@ -202,7 +209,9 @@ function Kanban() {
         </Box>
       </Paper>
       
-      <DialogTask isOpen={isOpen} handleCloseDialog={handleCloseDialog} />
+      <TaskViewModal isOpen={isOpen} handleCloseDialog={handleCloseDialog} />
+
+      <TaskEditModal isOpen={isOpenAddTask} handleCloseDialogAddTask={handleCloseDialogAddTask} />
 
     </div>
   )

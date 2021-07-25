@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   icon: {
     marginRight: 10,
     marginTop: 4
@@ -20,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function DialogTask({ isOpen, handleCloseDialog }) {
+export default function TaskViewModal({ isOpen, handleCloseDialog }) {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <Dialog
+        fullWidth
         maxWidth="sm"
         open={isOpen}
         aria-labelledby="max-width-dialog-title"
