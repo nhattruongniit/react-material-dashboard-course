@@ -2,7 +2,6 @@ import React from 'react';
 import Chart from "react-apexcharts";
 import clsx from 'clsx';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,33 +13,10 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
 
-const useStyles = makeStyles(theme =>({
-  table: {
-    width: '100%'
-  },
-  progressInprocess: {
-    '& div': {
-      backgroundColor: theme.palette.primary.main
-    }
-  },
-  progressCompleted: {
-    '& div': {
-      backgroundColor: theme.palette.success.main
-    }
-  },
-  high: {
-    color: theme.palette.error.main
-  },
-  medium: {
-    color: theme.palette.info.main
-  },
-  low: {
-    color: theme.palette.warning.main
-  },
-}));
+// styles
+import useCommonStyles from 'hooks/useCommonStyles';
 
 function createData(status, number) {
   return { status, number };
@@ -52,17 +28,17 @@ const rows = [
   createData('Fashion', 13)
 ];
 
-function createDataTodo(title, author, progress, severity, status) {
-  return { title, author, progress, severity, status};
+function createDataTodo(title, author, severity, status) {
+  return { title, author, severity, status};
 }
 
 const todos = [
-  createDataTodo('Learn React', 'Tony Nguyen', 100, 'low', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 0, 'medium', 'New'),
-  createDataTodo('Learn React', 'Tony Nguyen', 20, 'high', 'Inprocess'),
-  createDataTodo('Learn React', 'Tony Nguyen', 100, 'high', 'Completed'),
-  createDataTodo('Learn React', 'Tony Nguyen', 0, 'medium', 'New'),
-  createDataTodo('Learn React', 'Tony Nguyen', 60, 'medium', 'Inprocess'),
+  createDataTodo('Learn React', 'Tony Nguyen', 'low', 'completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 'medium', 'new'),
+  createDataTodo('Learn React', 'Tony Nguyen', 'high', 'inprocess'),
+  createDataTodo('Learn React', 'Tony Nguyen', 'high', 'completed'),
+  createDataTodo('Learn React', 'Tony Nguyen', 'medium', 'new'),
+  createDataTodo('Learn React', 'Tony Nguyen', 'medium', 'inprocess'),
 ];
 
 function createDataUser(email, role) {
@@ -92,23 +68,8 @@ const options = {
 
 const series = [44, 55, 13];
 
-function LinearProgressWithLabel(props) {
-  return (
-    <Box display="flex" alignItems="center">
-      <Box width="100%" mr={1}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-      <Box minWidth={35}>
-        <Typography variant="body2" color="textSecondary">{`${Math.round(
-          props.value,
-        )}%`}</Typography>
-      </Box>
-    </Box>
-  );
-}
-
 function Dashboard() {
-  const classes = useStyles();
+  const commonStyles = useCommonStyles();
 
   return (
     <div>
@@ -121,7 +82,7 @@ function Dashboard() {
               <Grid container justifyContent="space-between">
                 <Grid item xs={12} sm={12} md={4}>
                   <TableContainer>
-                    <Table className={classes.table} aria-label="simple table">
+                    <Table aria-label="simple table">
                       <TableHead>
                         <TableRow>
                           <TableCell>Category</TableCell>
@@ -169,12 +130,11 @@ function Dashboard() {
             <Box m={2}>
               <Grid container item xs={12}><h2>Tasks</h2></Grid>
               <TableContainer>
-                <Table className={classes.table} aria-label="simple table">
+                <Table aria-label="simple table">
                   <TableHead>
                     <TableRow>
                       <TableCell width="20%">Title</TableCell>
                       <TableCell width="20%" >Author</TableCell>
-                      <TableCell width="30%">Progress</TableCell>
                       <TableCell width="15%">Severity</TableCell>
                       <TableCell width="15%">Status</TableCell>
                     </TableRow>
@@ -186,28 +146,26 @@ function Dashboard() {
                           {row.title}
                         </TableCell>
                         <TableCell>{row.author}</TableCell>
-                        <TableCell>
-                          <LinearProgressWithLabel 
+                        <TableCell width="15%">
+                          <Chip 
                             className={clsx(
-                              (row.progress > 0 && row.progress < 99) && classes.progressInprocess,
-                              row.progress === 100 && classes.progressCompleted
+                              commonStyles.textCapitalize,
+                              row.severity === 'low' && commonStyles.chipLow,
+                              row.severity === 'medium' && commonStyles.chipMedium,
+                              row.severity === 'high' && commonStyles.chipHigh,
                             )}
-                            value={row.progress} 
+                            label={row.severity} 
                           />
                         </TableCell>
-                        <TableCell width="15%">
-                          <span
-                            className={clsx(
-                              row.severity === 'low' && classes.low,
-                              row.severity === 'medium' && classes.medium,
-                              row.severity === 'high' && classes.high,
-                            )}
-                          >
-                            {row.severity}
-                          </span>
-                          
+                        <TableCell
+                          className={clsx(
+                            commonStyles.textCapitalize,
+                            row.status === 'completed' && commonStyles.colorTextCompleted,
+                            row.status === 'inprocess' && commonStyles.colorTextInprocess,
+                          )}
+                        >
+                          {row.status}
                         </TableCell>
-                        <TableCell>{row.status}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -221,7 +179,7 @@ function Dashboard() {
             <Box m={2}>
               <Grid container item xs={12}><h2>Users</h2></Grid>
               <TableContainer>
-                <Table className={classes.table} aria-label="simple table">
+                <Table aria-label="simple table">
                   <TableHead>
                     <TableRow>
                       <TableCell>Email</TableCell>
