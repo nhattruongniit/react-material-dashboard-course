@@ -66,7 +66,6 @@ function UserAdd() {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value="admin">Admin</MenuItem>
                     <MenuItem value="operator">Operator</MenuItem>
                     <MenuItem value="collaborator">Collaborator</MenuItem>
                   </Select>

@@ -26,7 +26,7 @@ function createData(avatar, name, email, role) {
 }
 
 const rows = [
-  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'ADMIN'),
+  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'COLLABORATOR'),
   createData('https://cdn.fakercloud.com/avatars/okandungel_128.jpg', 'David Name', 'david@gmail.com', 'OPERATOR'),
 ];
 

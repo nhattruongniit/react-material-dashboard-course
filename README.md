@@ -18,7 +18,7 @@ Check out the live application -> https://tender-montalcini-22dc6e.netlify.app/
 
 - axios interceptor
 - authenticate routes
-- role user
+- authorize user
 - drag & drop
 - infinite scroll
 - dark mode
@@ -26,4 +26,13 @@ Check out the live application -> https://tender-montalcini-22dc6e.netlify.app/
 
 ## API
 
-use api: https://github.com/nhattruongniit/tony-json-server
+```bash
+# Get User, Todo, Photo
+Api:       https://tony-json-server.herokuapp.com
+Github:    https://github.com/nhattruongniit/tony-json-server
+
+# Login, Register, Authenticate User
+Api:       https://tony-auth-express.herokuapp.com
+Github:    https://github.com/nhattruongniit/tony-auth-express
+
+```
