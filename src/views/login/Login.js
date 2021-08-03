@@ -101,9 +101,9 @@ const Login = () => {
               margin="normal"
               required
               fullWidth
-              id="username"
-              label="Username"
-              name="username"
+              id="email"
+              label="Email Address"
+              name="email"
               autoFocus
             />
             <TextField
