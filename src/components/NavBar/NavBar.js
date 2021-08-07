@@ -13,6 +13,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import PhotoIcon from '@material-ui/icons/Photo';
+import PersonIcon from '@material-ui/icons/Person';
 
 // assets
 import LogoImg from 'assets/images/logo.png'
@@ -49,11 +50,17 @@ function NavBar({ mobileOpen, handleDrawerToggle }) {
            </ListItemIcon>
           <ListItemText primary="Kanban" />
         </ListItem>
-        <ListItem button onClick={() => history.push('/user/list')}>
+        <ListItem button onClick={() => history.push('/member/list')}>
           <ListItemIcon>
-              <PeopleIcon />
+            <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="User" />
+          <ListItemText primary="Members" />
+        </ListItem>
+        <ListItem button onClick={() => history.push('/user')}>
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText primary="Users" />
         </ListItem>
       </List>
     </>

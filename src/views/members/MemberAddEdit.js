@@ -1,5 +1,7 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
 
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField'
@@ -11,13 +13,22 @@ import Button from '@material-ui/core/Button';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
-function UserAdd() {
+function MemberAddEdit() {
   const history = useHistory();
+  const { id } = useParams();
+
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-20'));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
     <>
       <Grid container alignItems="center">
-        <Grid item sm={12}><h2>Add User</h2></Grid>
+        <Grid item sm={12}><h2>{id ? 'Edit Member' : 'Add Member' }</h2></Grid>
       </Grid>
       <Paper>
         <Box m={2}>
@@ -54,22 +65,29 @@ function UserAdd() {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" fullWidth>
-                  <InputLabel id="demo-simple-select-outlined-label">Role</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    label="Role"
-                    value=""
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  label="Position"
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
                     fullWidth
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="operator">Operator</MenuItem>
-                    <MenuItem value="collaborator">Collaborator</MenuItem>
-                  </Select>
-                </FormControl>
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-join"
+                    label="Date Join"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
+                  />
+                </MuiPickersUtilsProvider>
               </Grid>
             </Grid>
             
@@ -124,7 +142,9 @@ function UserAdd() {
               <Button variant="outlined" color="primary" className="mr-20" onClick={() => history.goBack(-1)}>
                 Cancel
               </Button>
-              <Button color="primary" variant="contained" startIcon={<GroupAddIcon />}>Add User</Button>
+              <Button color="primary" variant="contained" startIcon={<GroupAddIcon />}>
+                {id ? 'Edit' : 'Add'}
+              </Button>
             </Grid>
           </Grid>
         </Box>
@@ -133,4 +153,4 @@ function UserAdd() {
   )
 }
 
-export default UserAdd
+export default MemberAddEdit

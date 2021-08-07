@@ -9,13 +9,14 @@ import TopBar from 'components/TopBar/TopBar';
 import NavBar from 'components/NavBar/NavBar';
 
 // views
-import UserList from 'views/users/UserList';
-import UserAdd from 'views/users/UserAdd';
+import MemberList from 'views/members/MemberList';
+import MemeberAddEdit from 'views/members/MemberAddEdit';
 import Dashboard from 'views/dashboard/Dashboard';
 import Kanban from 'views/kanban/Kanban';
 import PhotoList from 'views/photo/PhotoList';
 import PhotoAddEdit from 'views/photo/PhotoAddEdit';
 import PhotoDetail from 'views/photo/PhotoDetail';
+import User from 'views/user/User';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,13 +65,15 @@ function App() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route path="/user/list" component={UserList} />
-          <Route path="/user/add" component={UserAdd} />
+          <Route path="/member/list" component={MemberList} />
+          <Route path="/member/add" component={MemeberAddEdit} />
+          <Route path="/member/:id" component={MemeberAddEdit} />
           <Route path="/photo/list" component={PhotoList} />
           <Route path="/photo/add" component={PhotoAddEdit} />
           <Route path="/photo/edit/:id" component={PhotoAddEdit} />
           <Route path="/photo/:id" component={PhotoDetail} />
           <Route path="/kanban" component={Kanban} />
+          <Route path="/user" component={User} />
           <Route path="/" component={Dashboard} />
         </Switch>
       </main>

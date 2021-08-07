@@ -1,5 +1,5 @@
-import { useHistory} from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,54 +12,57 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import Pagination from 'components/Pagination/Pagination';
+import ConfirmDialog from './ConfirmDialog';
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
-
-function createData(avatar, name, email, role) {
-  return { avatar, name, email, role };
+function createData(avatar, name, email, position) {
+  return { avatar, name, email, position };
 }
 
 const rows = [
-  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'COLLABORATOR'),
-  createData('https://cdn.fakercloud.com/avatars/okandungel_128.jpg', 'David Name', 'david@gmail.com', 'OPERATOR'),
+  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'Software Engineer'),
+  createData('https://cdn.fakercloud.com/avatars/okandungel_128.jpg', 'David Name', 'david@gmail.com', 'Front End Developer'),
 ];
 
-export default function UserList() {
-  const classes = useStyles();
+export default function MemberList() {
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <>
       <Grid container alignItems="center">
-        <Grid item sm={8}><h2>User</h2></Grid>
+        <Grid item sm={8}><h2>Member</h2></Grid>
         <Grid container item sm={4} justifyContent="flex-end">
           <Button
             variant="contained"
             color="primary"
             size="small"
-            className={classes.button}
             startIcon={<AddIcon />}
-            onClick={() => history.push('/user/add')}
+            onClick={() => history.push('/member/add')}
           >
             Add
           </Button>
         </Grid>
       </Grid>
       <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
+        <Table  aria-label="member table">
           <TableHead>
             <TableRow>
               <TableCell>Avatar</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell>Role</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell>Position</TableCell>
+              <TableCell width="10%">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -72,10 +75,13 @@ export default function UserList() {
                   {row.name}
                 </TableCell>
                 <TableCell>{row.email}</TableCell>
-                <TableCell>{row.role}</TableCell>
+                <TableCell>{row.position}</TableCell>
                 <TableCell>
-                  <IconButton color="primary" aria-label="edit user" component="span">
+                  <IconButton color="primary" aria-label="edit user" component="span" onClick={() => history.push('/member/12')}>
                     <EditIcon />
+                  </IconButton>
+                  <IconButton color="secondary" aria-label="delete user" component="span" onClick={handleClickOpen}>
+                    <DeleteIcon />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -85,6 +91,8 @@ export default function UserList() {
       </TableContainer>
 
       <Pagination />
+
+      <ConfirmDialog open={open} handleClose={handleClose} />
     </>
     
   );
