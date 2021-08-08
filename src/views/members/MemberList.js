@@ -62,7 +62,7 @@ export default function MemberList() {
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Position</TableCell>
-              <TableCell width="10%">Action</TableCell>
+              <TableCell width="15%">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

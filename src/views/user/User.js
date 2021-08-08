@@ -57,7 +57,7 @@ export default function User() {
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Role</TableCell>
-              <TableCell width="10%">Action</TableCell>
+              <TableCell width="15%">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
