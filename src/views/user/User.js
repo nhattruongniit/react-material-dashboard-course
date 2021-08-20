@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -19,14 +20,53 @@ function createData(avatar, name, email, role) {
   return { avatar, name, email, role };
 }
 
-const rows = [
-  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'COLLABORATOR'),
-  createData('https://cdn.fakercloud.com/avatars/okandungel_128.jpg', 'David Name', 'david@gmail.com', 'OPERATOR'),
-];
+const dataMores = []
+for(let i = 0; i < 10; i++) {
+  dataMores.push(createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'COLLABORATOR'),)
+}
 
 export default function User() {
   const [open, setOpen] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
+  const [users, setUsers] = useState([])
+  const [isShowProgress, setIsShowProgress] = useState(false);
+  const progressRef = useRef();
+
+  function fetchUsers() {
+    setIsShowProgress(true)
+
+    setTimeout(() => {
+      setIsShowProgress(false)
+      setUsers(prevState => [...prevState, ...dataMores])
+    }, 1000)
+  } 
+
+  // infinite scroll
+  const handleLoadMore = useCallback((entries) => {
+    const entry = entries[0];
+    if(!entry.isIntersecting) return;
+    fetchUsers()
+  }, [])
+
+  useEffect(() => {
+    if(!progressRef.current) return;
+    let observerRefValue = null;
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+    const observer = new IntersectionObserver(handleLoadMore, options);
+    observer.observe(progressRef.current);
+    observerRefValue = progressRef.current;
+
+    return () => {
+      if(observerRefValue) {
+        observer.unobserve(observerRefValue)
+      }
+    }
+  }, [handleLoadMore])
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,8 +101,8 @@ export default function User() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
+            {users.map((row, index) => (
+              <TableRow key={index}>
                 <TableCell scope="row">
                   <img src={row.avatar} alt="Avatar" width="50px" />
                 </TableCell>
@@ -84,6 +124,11 @@ export default function User() {
           </TableBody>
         </Table>
       </TableContainer>
+      <br />
+      <Grid ref={progressRef} container justifyContent="center" style={{ display: isShowProgress ? 'visible' : 'hidden' }}>
+        <CircularProgress />
+      </Grid>
+    
 
       <ConfirmDialog open={open} handleClose={handleClose} />
 
