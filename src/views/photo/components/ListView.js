@@ -41,14 +41,17 @@ function ListView({ data }) {
               <TableCell scope="row">
                 <img src={row.image} alt="Description" width={100} />
               </TableCell>
-              <TableCell  scope="row">
-                {row.title}
-              </TableCell>
+              <TableCell scope="row">{row.title}</TableCell>
               <TableCell>{row.category}</TableCell>
               <TableCell>{row.description}</TableCell>
               <TableCell>
                 <Grid container>
-                  <IconButton color="primary" aria-label="edit photo" component="span" onClick={() => history.push('/photo/edit/1')}>
+                  <IconButton
+                    color="primary"
+                    aria-label="edit photo"
+                    component="span"
+                    onClick={() => history.push('/photo/edit/1')}
+                  >
                     <EditIcon />
                   </IconButton>
                   <IconButton color="primary" aria-label="view photo" component="span" onClick={() => history.push('/photo/1')}>
@@ -61,8 +64,7 @@ function ListView({ data }) {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }
 
-export default ListView
- 
+export default ListView;

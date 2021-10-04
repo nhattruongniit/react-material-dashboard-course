@@ -15,17 +15,9 @@ import Select from '@material-ui/core/Select';
 export default function TaskEditModal({ isOpen, handleCloseDialogAddTask }) {
   return (
     <React.Fragment>
-      <Dialog
-        fullWidth
-        maxWidth="sm"
-        open={isOpen}
-        aria-labelledby="max-width-dialog-title"
-      >
+      <Dialog fullWidth maxWidth="sm" open={isOpen} aria-labelledby="max-width-dialog-title">
         <DialogContent>
-          <Typography
-            variant="h6"
-            color="textPrimary"
-          >
+          <Typography variant="h6" color="textPrimary">
             Add Task
           </Typography>
           <br />
@@ -57,30 +49,17 @@ export default function TaskEditModal({ isOpen, handleCloseDialogAddTask }) {
             </Grid>
           </Grid>
           <Box mt={2}>
-            <Typography
-              variant="subtitle1"
-              color="textPrimary"
-            >
+            <Typography variant="subtitle1" color="textPrimary">
               Description
             </Typography>
-            <TextField
-              multiline
-              rows={6}
-              fullWidth
-              variant="outlined"
-              placeholder="Leave a message"
-            />
+            <TextField multiline rows={6} fullWidth variant="outlined" placeholder="Leave a message" />
           </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialogAddTask} color="primary">
             Close
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-          >
+          <Button variant="contained" color="primary" size="small">
             Add
           </Button>
         </DialogActions>

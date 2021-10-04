@@ -17,9 +17,8 @@ ReactDOM.render(
       <Route exact path="/register" component={Register} />
       <Route path="/" component={App} />
     </Switch>
-    
   </Router>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

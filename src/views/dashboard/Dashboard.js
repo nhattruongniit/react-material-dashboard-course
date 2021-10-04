@@ -1,5 +1,5 @@
 import React from 'react';
-import Chart from "react-apexcharts";
+import Chart from 'react-apexcharts';
 import clsx from 'clsx';
 
 import Table from '@material-ui/core/Table';
@@ -22,14 +22,10 @@ function createData(status, number) {
   return { status, number };
 }
 
-const rows = [
-  createData('Sports', 44),
-  createData('Nature', 55),
-  createData('Fashion', 13)
-];
+const rows = [createData('Sports', 44), createData('Nature', 55), createData('Fashion', 13)];
 
 function createDataTodo(title, author, severity, status) {
-  return { title, author, severity, status};
+  return { title, author, severity, status };
 }
 
 const todos = [
@@ -42,7 +38,7 @@ const todos = [
 ];
 
 function createDataUser(email, role) {
-  return { email, role};
+  return { email, role };
 }
 
 const users = [
@@ -58,13 +54,12 @@ const users = [
   createDataUser('david@gmail.com', 'Operator'),
 ];
 
-
 const options = {
   chart: {
     type: 'pie',
   },
   labels: ['sports', 'nature', 'fashsion'],
-}
+};
 
 const series = [44, 55, 13];
 
@@ -78,7 +73,9 @@ function Dashboard() {
         <Grid item xs={12}>
           <Paper>
             <Box m={2}>
-              <Grid container item xs={12}><h2>Photos</h2></Grid>
+              <Grid container item xs={12}>
+                <h2>Photos</h2>
+              </Grid>
               <Grid container justifyContent="space-between">
                 <Grid item xs={12} sm={12} md={4}>
                   <TableContainer>
@@ -86,7 +83,7 @@ function Dashboard() {
                       <TableHead>
                         <TableRow>
                           <TableCell>Category</TableCell>
-                          <TableCell align="right"/>
+                          <TableCell align="right" />
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -104,17 +101,7 @@ function Dashboard() {
                 </Grid>
                 <Grid container justifyContent="center" item xs={12} sm={12} md={6}>
                   <div>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          size="small"
-                          name="legend"
-                          color="primary"
-                          checked
-                        />
-                      }
-                      label="Legend"
-                    />
+                    <FormControlLabel control={<Checkbox size="small" name="legend" color="primary" checked />} label="Legend" />
                     <br />
                     <Chart options={options} series={series} type="pie" width={500} />
                   </div>
@@ -128,13 +115,15 @@ function Dashboard() {
         <Grid item xs={12} sm={12} md={7}>
           <Paper>
             <Box m={2}>
-              <Grid container item xs={12}><h2>Tasks</h2></Grid>
+              <Grid container item xs={12}>
+                <h2>Tasks</h2>
+              </Grid>
               <TableContainer>
                 <Table aria-label="simple table">
                   <TableHead>
                     <TableRow>
                       <TableCell width="20%">Title</TableCell>
-                      <TableCell width="20%" >Author</TableCell>
+                      <TableCell width="20%">Author</TableCell>
                       <TableCell width="15%">Severity</TableCell>
                       <TableCell width="15%">Status</TableCell>
                     </TableRow>
@@ -147,14 +136,14 @@ function Dashboard() {
                         </TableCell>
                         <TableCell>{row.author}</TableCell>
                         <TableCell width="15%">
-                          <Chip 
+                          <Chip
                             className={clsx(
                               commonStyles.textCapitalize,
                               row.severity === 'low' && commonStyles.chipLow,
                               row.severity === 'medium' && commonStyles.chipMedium,
                               row.severity === 'high' && commonStyles.chipHigh,
                             )}
-                            label={row.severity} 
+                            label={row.severity}
                           />
                         </TableCell>
                         <TableCell
@@ -177,7 +166,9 @@ function Dashboard() {
         <Grid item xs={12} sm={12} md={5}>
           <Paper>
             <Box m={2}>
-              <Grid container item xs={12}><h2>Users</h2></Grid>
+              <Grid container item xs={12}>
+                <h2>Users</h2>
+              </Grid>
               <TableContainer>
                 <Table aria-label="simple table">
                   <TableHead>
@@ -203,7 +194,7 @@ function Dashboard() {
         </Grid>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

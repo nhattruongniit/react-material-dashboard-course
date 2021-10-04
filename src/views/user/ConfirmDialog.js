@@ -20,7 +20,8 @@ export default function ConfirmDialog({ open, handleClose }) {
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
           Selected user will be permanently deleted.
-          <br /><br />
+          <br />
+          <br />
           <strong>Caution:</strong> This cannot be undone.
         </DialogContentText>
       </DialogContent>

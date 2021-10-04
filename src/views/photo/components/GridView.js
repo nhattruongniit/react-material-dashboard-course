@@ -24,18 +24,14 @@ function GridView({ data }) {
       {data.map((row, idx) => (
         <Grid key={idx} item xs={12} md={3}>
           <Card>
-            <CardMedia
-              className={classes.media}
-              image={row.image}
-              title="Contemplative Reptile"
-            />
+            <CardMedia className={classes.media} image={row.image} title="Contemplative Reptile" />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 {row.title}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except
+                Antarctica
               </Typography>
             </CardContent>
             <CardActions>
@@ -50,7 +46,7 @@ function GridView({ data }) {
         </Grid>
       ))}
     </Grid>
-  )
+  );
 }
 
-export default GridView
+export default GridView;

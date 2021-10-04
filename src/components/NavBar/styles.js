@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   drawerPaper: {
-    width: `${process.env.REACT_APP_DRAWER_WIDTH}px`
+    width: `${process.env.REACT_APP_DRAWER_WIDTH}px`,
   },
   drawerHeader: {
     display: 'flex',
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       alignItems: 'center',
       justifyContent: 'center',
       textDecoration: 'none',
-    }
+    },
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {

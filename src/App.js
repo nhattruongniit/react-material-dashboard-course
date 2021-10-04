@@ -5,18 +5,18 @@ import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // components
-import TopBar from 'components/TopBar/TopBar';
-import NavBar from 'components/NavBar/NavBar';
+import TopBar from '@components/TopBar/TopBar';
+import NavBar from '@components/NavBar/NavBar';
 
 // views
-import MemberList from 'views/members/MemberList';
-import MemeberAddEdit from 'views/members/MemberAddEdit';
-import Dashboard from 'views/dashboard/Dashboard';
-import Kanban from 'views/kanban/Kanban';
-import PhotoList from 'views/photo/PhotoList';
-import PhotoAddEdit from 'views/photo/PhotoAddEdit';
-import PhotoDetail from 'views/photo/PhotoDetail';
-import User from 'views/user/User';
+import MemberList from '@views/members/MemberList';
+import MemeberAddEdit from '@views/members/MemberAddEdit';
+import Dashboard from '@views/dashboard/Dashboard';
+import Kanban from '@views/kanban/Kanban';
+import PhotoList from '@views/photo/PhotoList';
+import PhotoAddEdit from '@views/photo/PhotoAddEdit';
+import PhotoDetail from '@views/photo/PhotoDetail';
+import User from '@views/user/User';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function App() {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -50,7 +49,6 @@ function App() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
 
   return (
     <div className={classes.root}>

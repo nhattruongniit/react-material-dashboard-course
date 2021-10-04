@@ -31,14 +31,7 @@ export default function EditDialog({ openEditDialog, handleCloseEditDialog }) {
         <DialogContentText id="alert-dialog-description">
           <FormControl variant="outlined" fullWidth>
             <InputLabel id="demo-simple-select-outlined-label">Role</InputLabel>
-            <Select
-              fullWidth
-              labelId="select-role"
-              id="select-role"
-              label="Role"
-              value={role}
-              onChange={handleChange}
-            >
+            <Select fullWidth labelId="select-role" id="select-role" label="Role" value={role} onChange={handleChange}>
               <MenuItem value="operator">Operator</MenuItem>
               <MenuItem value="collaborator">Collaborator</MenuItem>
             </Select>

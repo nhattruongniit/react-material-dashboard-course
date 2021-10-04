@@ -1,10 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   cardHeader: {
     backgroundColor: theme.palette.warning.main,
     color: '#fff',
-    padding: '7px 16px'
+    padding: '7px 16px',
   },
   cardHeaderInprocess: {
     backgroundColor: theme.palette.primary.main,
@@ -14,9 +14,9 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     '& + &': {
-      marginTop: 20
-    }
-  }
+      marginTop: 20,
+    },
+  },
 }));
 
 export default useStyles;

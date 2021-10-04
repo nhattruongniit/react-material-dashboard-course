@@ -35,7 +35,6 @@ function TopBar({ isDrawer, handleDrawerToggle }) {
           <Account {...classes} />
         </Grid>
       </Grid>
-      
     </Toolbar>
   );
 }

@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -24,11 +24,7 @@ export default function PhotoAddEdit() {
           <Box m={2}>
             <Grid container item sm={12} spacing={2}>
               <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Title"
-                />
+                <TextField fullWidth variant="outlined" label="Title" />
               </Grid>
               <Grid item xs={12} md={6}>
                 <FormControl variant="outlined" fullWidth>
@@ -50,18 +46,13 @@ export default function PhotoAddEdit() {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="outlined-multiline-static"
-                  label="Description"
-                  multiline
-                  rows={4}
-                  variant="outlined"
-                />
+                <TextField fullWidth id="outlined-multiline-static" label="Description" multiline rows={4} variant="outlined" />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography color="textSecondary" component="h3">Image</Typography>
-                <br/>
+                <Typography color="textSecondary" component="h3">
+                  Image
+                </Typography>
+                <br />
                 <img src="http://placeimg.com/640/480/fashion" alt="Avatar" width="100%" />
                 <br />
                 <Button variant="outlined" size="small" color="primary">
@@ -72,7 +63,9 @@ export default function PhotoAddEdit() {
                 <Button variant="outlined" color="primary" className="mr-20" onClick={() => history.goBack(-1)}>
                   Cancel
                 </Button>
-                <Button color="primary" variant="contained" startIcon={<AddIcon />}>Add Photo</Button>
+                <Button color="primary" variant="contained" startIcon={<AddIcon />}>
+                  Add Photo
+                </Button>
               </Grid>
             </Grid>
           </Box>

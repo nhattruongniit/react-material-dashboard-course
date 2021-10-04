@@ -12,11 +12,11 @@ function Language({ ...classes }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [language, setLanguage] = useState('en');
 
-  const _handleOpenLanguage = event => {
+  const _handleOpenLanguage = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleChooseLanguage = lang => () => {
+  const handleChooseLanguage = (lang) => () => {
     setAnchorEl(null);
     setLanguage(lang);
   };

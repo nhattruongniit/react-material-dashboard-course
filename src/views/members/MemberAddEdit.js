@@ -4,7 +4,7 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField'
+import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -28,7 +28,9 @@ function MemberAddEdit() {
   return (
     <>
       <Grid container alignItems="center">
-        <Grid item sm={12}><h2>{id ? 'Edit Member' : 'Add Member' }</h2></Grid>
+        <Grid item sm={12}>
+          <h2>{id ? 'Edit Member' : 'Add Member'}</h2>
+        </Grid>
       </Grid>
       <Paper>
         <Box m={2}>
@@ -44,32 +46,16 @@ function MemberAddEdit() {
             </Grid>
             <Grid container item spacing={2} xs={12}>
               <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="First Name"
-                />
+                <TextField fullWidth variant="outlined" label="First Name" />
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Last Name"
-                />
+                <TextField fullWidth variant="outlined" label="Last Name" />
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Email"
-                />
+                <TextField fullWidth variant="outlined" label="Email" />
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label="Position"
-                />
+                <TextField fullWidth variant="outlined" label="Position" />
               </Grid>
               <Grid item xs={12} md={6}>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -90,7 +76,6 @@ function MemberAddEdit() {
                 </MuiPickersUtilsProvider>
               </Grid>
             </Grid>
-            
           </Grid>
           <br />
           <Grid>
@@ -98,11 +83,7 @@ function MemberAddEdit() {
           </Grid>
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                variant="outlined"
-                label="Address"
-              />
+              <TextField fullWidth variant="outlined" label="Address" />
             </Grid>
             <Grid item xs={12} md={4}>
               <FormControl variant="outlined" fullWidth>
@@ -150,7 +131,7 @@ function MemberAddEdit() {
         </Box>
       </Paper>
     </>
-  )
+  );
 }
 
-export default MemberAddEdit
+export default MemberAddEdit;

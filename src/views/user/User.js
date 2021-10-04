@@ -20,53 +20,60 @@ function createData(avatar, name, email, role) {
   return { avatar, name, email, role };
 }
 
-const dataMores = []
-for(let i = 0; i < 10; i++) {
-  dataMores.push(createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'COLLABORATOR'),)
+const dataMores = [];
+for (let i = 0; i < 10; i++) {
+  dataMores.push(
+    createData(
+      'https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg',
+      'Tony Nguyen',
+      'nhattruong1811@gmail.com',
+      'COLLABORATOR',
+    ),
+  );
 }
 
 export default function User() {
   const [open, setOpen] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
   const [isShowProgress, setIsShowProgress] = useState(false);
   const progressRef = useRef();
 
   function fetchUsers() {
-    setIsShowProgress(true)
+    setIsShowProgress(true);
 
     setTimeout(() => {
-      setIsShowProgress(false)
-      setUsers(prevState => [...prevState, ...dataMores])
-    }, 1000)
-  } 
+      setIsShowProgress(false);
+      setUsers((prevState) => [...prevState, ...dataMores]);
+    }, 1000);
+  }
 
   // infinite scroll
   const handleLoadMore = useCallback((entries) => {
     const entry = entries[0];
-    if(!entry.isIntersecting) return;
-    fetchUsers()
-  }, [])
+    if (!entry.isIntersecting) return;
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
-    if(!progressRef.current) return;
+    if (!progressRef.current) return;
     let observerRefValue = null;
 
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 1.0
-    }
+      threshold: 1.0,
+    };
     const observer = new IntersectionObserver(handleLoadMore, options);
     observer.observe(progressRef.current);
     observerRefValue = progressRef.current;
 
     return () => {
-      if(observerRefValue) {
-        observer.unobserve(observerRefValue)
+      if (observerRefValue) {
+        observer.unobserve(observerRefValue);
       }
-    }
-  }, [handleLoadMore])
+    };
+  }, [handleLoadMore]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -83,11 +90,13 @@ export default function User() {
   const handleCloseEditDialog = () => {
     setOpenEditDialog(false);
   };
-  
+
   return (
     <>
       <Grid item xs={12}>
-        <Grid item sm={8}><h2>User</h2></Grid>
+        <Grid item sm={8}>
+          <h2>User</h2>
+        </Grid>
       </Grid>
       <TableContainer component={Paper}>
         <Table aria-label="user list">
@@ -106,9 +115,7 @@ export default function User() {
                 <TableCell scope="row">
                   <img src={row.avatar} alt="Avatar" width="50px" />
                 </TableCell>
-                <TableCell scope="row">
-                  {row.name}
-                </TableCell>
+                <TableCell scope="row">{row.name}</TableCell>
                 <TableCell>{row.email}</TableCell>
                 <TableCell>{row.role}</TableCell>
                 <TableCell>
@@ -128,12 +135,10 @@ export default function User() {
       <Grid ref={progressRef} container justifyContent="center" style={{ display: isShowProgress ? 'visible' : 'hidden' }}>
         <CircularProgress />
       </Grid>
-    
 
       <ConfirmDialog open={open} handleClose={handleClose} />
 
       <EditDialog openEditDialog={openEditDialog} handleCloseEditDialog={handleCloseEditDialog} />
     </>
-    
   );
 }

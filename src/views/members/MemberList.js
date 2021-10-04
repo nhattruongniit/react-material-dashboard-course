@@ -22,7 +22,12 @@ function createData(avatar, name, email, position) {
 }
 
 const rows = [
-  createData('https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg', 'Tony Nguyen', 'nhattruong1811@gmail.com', 'Software Engineer'),
+  createData(
+    'https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg',
+    'Tony Nguyen',
+    'nhattruong1811@gmail.com',
+    'Software Engineer',
+  ),
   createData('https://cdn.fakercloud.com/avatars/okandungel_128.jpg', 'David Name', 'david@gmail.com', 'Front End Developer'),
 ];
 
@@ -41,7 +46,9 @@ export default function MemberList() {
   return (
     <>
       <Grid container alignItems="center">
-        <Grid item sm={8}><h2>Member</h2></Grid>
+        <Grid item sm={8}>
+          <h2>Member</h2>
+        </Grid>
         <Grid container item sm={4} justifyContent="flex-end">
           <Button
             variant="contained"
@@ -55,7 +62,7 @@ export default function MemberList() {
         </Grid>
       </Grid>
       <TableContainer component={Paper}>
-        <Table  aria-label="member table">
+        <Table aria-label="member table">
           <TableHead>
             <TableRow>
               <TableCell>Avatar</TableCell>
@@ -71,9 +78,7 @@ export default function MemberList() {
                 <TableCell scope="row">
                   <img src={row.avatar} alt="Avatar" width="50px" />
                 </TableCell>
-                <TableCell scope="row">
-                  {row.name}
-                </TableCell>
+                <TableCell scope="row">{row.name}</TableCell>
                 <TableCell>{row.email}</TableCell>
                 <TableCell>{row.position}</TableCell>
                 <TableCell>
@@ -94,6 +99,5 @@ export default function MemberList() {
 
       <ConfirmDialog open={open} handleClose={handleClose} />
     </>
-    
   );
 }

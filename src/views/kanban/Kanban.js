@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import clsx from 'clsx'
+import React, { useState } from 'react';
+import clsx from 'clsx';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -11,39 +11,39 @@ import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import AddIcon from '@material-ui/icons/Add';
 
-import TaskViewModal from './components/TaskViewModal'
+import TaskViewModal from './components/TaskViewModal';
 import TaskEditModal from './components/TaskEditModal';
 
 // styles
 import useStyles from './styles';
 
 const news = [
-  { 
+  {
     id: 1,
     text: 'Learn react',
-    author: 'Tony Nguyen'
+    author: 'Tony Nguyen',
   },
-  { 
+  {
     id: 2,
     text: 'Learn javacript',
-    author: 'Tony Nguyen'
+    author: 'Tony Nguyen',
   },
-  { 
+  {
     id: 3,
     text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
-    author: 'Tony Nguyen'
+    author: 'Tony Nguyen',
   },
-  { 
+  {
     id: 4,
     text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
-    author: 'Tony Nguyen'
+    author: 'Tony Nguyen',
   },
-  { 
+  {
     id: 5,
     text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
-    author: 'Tony Nguyen'
-  }
-]
+    author: 'Tony Nguyen',
+  },
+];
 
 function Kanban() {
   const classes = useStyles();
@@ -51,17 +51,19 @@ function Kanban() {
   const [isOpenAddTask, setIsOpenAddTask] = useState(false);
 
   function handleCloseDialog() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   function handleCloseDialogAddTask() {
-    setIsOpenAddTask(false)
+    setIsOpenAddTask(false);
   }
 
   return (
     <div>
       <Grid container alignItems="center">
-        <Grid item sm={8}><h2>Kanban Board</h2></Grid>
+        <Grid item sm={8}>
+          <h2>Kanban Board</h2>
+        </Grid>
         <Grid container item sm={4} justifyContent="flex-end">
           <Button
             variant="contained"
@@ -81,12 +83,9 @@ function Kanban() {
             <Grid item xs={4}>
               <Paper elevation={3}>
                 <Card className={classes.root}>
-                  <CardHeader
-                    className={classes.cardHeader}
-                    title="New"
-                  />
+                  <CardHeader className={classes.cardHeader} title="New" />
                   <CardContent>
-                    {news.map(row => (
+                    {news.map((row) => (
                       <Paper elevation={3} key={row.id} className={classes.paper}>
                         <CardContent>
                           <Typography variant="body2" component="p">
@@ -115,19 +114,13 @@ function Kanban() {
             <Grid item xs={4}>
               <Paper elevation={3}>
                 <Card className={classes.root}>
-                  <CardHeader
-                    className={clsx(
-                      classes.cardHeader,
-                      classes.cardHeaderInprocess,
-                    )}
-                    title="In Process"
-                  />
+                  <CardHeader className={clsx(classes.cardHeader, classes.cardHeaderInprocess)} title="In Process" />
                   <CardContent>
                     <Paper elevation={3} className={classes.paper}>
                       <CardContent>
                         <Typography variant="body2" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                          across all continents except Antarctica
+                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all
+                          continents except Antarctica
                         </Typography>
                       </CardContent>
                       <CardActions>
@@ -151,19 +144,13 @@ function Kanban() {
             <Grid item xs={4}>
               <Paper elevation={3}>
                 <Card className={classes.root}>
-                  <CardHeader
-                    className={clsx(
-                      classes.cardHeader,
-                      classes.cardHeaderCompleted,
-                    )}
-                    title="Completed"
-                  />
+                  <CardHeader className={clsx(classes.cardHeader, classes.cardHeaderCompleted)} title="Completed" />
                   <CardContent>
                     <Paper elevation={3} className={classes.paper}>
                       <CardContent>
                         <Typography variant="body2" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                          across all continents except Antarctica
+                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all
+                          continents except Antarctica
                         </Typography>
                       </CardContent>
                       <CardActions>
@@ -183,8 +170,8 @@ function Kanban() {
                     <Paper elevation={3} className={classes.paper}>
                       <CardContent>
                         <Typography variant="body2" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                          across all continents except Antarctica
+                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all
+                          continents except Antarctica
                         </Typography>
                       </CardContent>
                       <CardActions>
@@ -208,13 +195,12 @@ function Kanban() {
           </Grid>
         </Box>
       </Paper>
-      
+
       <TaskViewModal isOpen={isOpen} handleCloseDialog={handleCloseDialog} />
 
       <TaskEditModal isOpen={isOpenAddTask} handleCloseDialogAddTask={handleCloseDialogAddTask} />
-
     </div>
-  )
+  );
 }
 
-export default Kanban
+export default Kanban;

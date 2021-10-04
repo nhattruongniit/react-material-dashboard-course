@@ -7,7 +7,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 
-
 // material icon
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
@@ -15,7 +14,7 @@ function Account({ ...classes }) {
   const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const _handleMenu = event => {
+  const _handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -55,12 +54,8 @@ function Account({ ...classes }) {
       >
         <div className={classes.textRole}>ADMIN</div>
         <Divider />
-        <MenuItem>
-          My account
-        </MenuItem>
-        <MenuItem onClick={_handleLogout}>
-          Logout
-        </MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem onClick={_handleLogout}>Logout</MenuItem>
       </Menu>
     </>
   );

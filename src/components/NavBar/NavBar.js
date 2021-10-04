@@ -16,7 +16,7 @@ import PhotoIcon from '@material-ui/icons/Photo';
 import PersonIcon from '@material-ui/icons/Person';
 
 // assets
-import LogoImg from 'assets/images/logo.png'
+import LogoImg from '@assets/images/logo.png';
 
 // styles
 import useStyles from './styles';
@@ -29,7 +29,7 @@ function NavBar({ mobileOpen, handleDrawerToggle }) {
   const renderDrawer = (
     <>
       <div className={classes.drawerHeader}>
-        <Link to='/'>
+        <Link to="/">
           <img src={LogoImg} alt="Logo" title="logo" />
           Material UI
         </Link>
@@ -37,17 +37,21 @@ function NavBar({ mobileOpen, handleDrawerToggle }) {
       <Divider />
       <List>
         <ListItem button onClick={() => history.push('/')}>
-          <ListItemIcon><DashboardIcon /></ListItemIcon>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem button onClick={() => history.push('/photo/list')}>
-          <ListItemIcon><PhotoIcon /></ListItemIcon>
+          <ListItemIcon>
+            <PhotoIcon />
+          </ListItemIcon>
           <ListItemText primary="Photo" />
         </ListItem>
         <ListItem button onClick={() => history.push('/kanban')}>
           <ListItemIcon>
             <AssessmentIcon />
-           </ListItemIcon>
+          </ListItemIcon>
           <ListItemText primary="Kanban" />
         </ListItem>
         <ListItem button onClick={() => history.push('/member/list')}>
@@ -96,7 +100,7 @@ function NavBar({ mobileOpen, handleDrawerToggle }) {
         </Drawer>
       </Hidden>
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;
